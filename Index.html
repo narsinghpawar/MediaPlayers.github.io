@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Load the custom CSS style file -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+	<title>Media Player</title>
+</head>
+<body onload="load()">
+	<div class="player">
+
+		<!-- Define the section for displaying details -->
+		<div class="details">
+			<div class="now-playing"></div>
+			<div class="track-art"></div>
+			<div class="track-name"></div>
+			<div class="track-artist">Track Artist</div>
+		</div>
+
+		<!-- Define the section for displaying track buttons -->
+		<div class="buttons">
+			<div class="prev-track" onclick="prevTrack()">
+				<i class="fa fa-step-backward fa-2x"></i>
+			</div>
+			<div class="playpause-track" onclick="playpauseTrack()" id="playpausetrack">
+				<i class="fa fa-play-circle fa-5x"></i>
+			</div>
+			<div class="next-track" onclick="nextTrack()">
+				<i class="fa fa-step-forward fa-2x"></i>
+			</div>
+		</div>
+
+		<!-- Define the section for displaying the seek slider-->
+		<div class="slider_container">
+			<div class="current-time">00:00</div>
+			<input type="range" min="1" max="100"
+			value="0" class="seek_slider" onchange="UpdateSeek()" id="seek_slider">
+			<div class="total-duration" id="total-duration" >00:00</div>
+		</div>
+
+		<!-- Define the section for displaying the volume slider-->
+		<div class="slider_container">
+			<i class="fa fa-volume-down"></i>
+			<input type="range" min="0" max="100"
+			value="99" class="volume_slider" onchange="setVolume()" id="volume_slider">
+			<div class="mute-vol">
+				<i class="fa fa-volume-up" onclick="muteOrUnmuted()" id="mute"></i>
+				<i class="fa-solid fa-slash" style="display: none;" id="slash"></i>
+			</div>
+		</div>
+		<audio id="audio" style="display: none;"></audio>
+
+	</div>
+
+
+	<!-- Load the main script for the player -->
+	<script src="script.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</body>
+</html>
